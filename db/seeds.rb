@@ -29,12 +29,12 @@ bike_image = [
     "https://i.ibb.co/z7ryKs5/pexels-photo-276517.jpg"
 ]
 
-5.times do 
+20.times do 
     Post.create!(title: Faker::Book.genre, description: Faker::Books::Lovecraft.paragraph, 
         likes: rand(1..50), url_link: bike_image.sample)
 end 
 
-15.times do 
+50.times do 
     Comment.create!( text: Faker::Books::Lovecraft.paragraph, 
         post: Post.all.sample )
 end
