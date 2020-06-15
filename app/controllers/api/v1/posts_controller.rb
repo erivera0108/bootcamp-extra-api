@@ -12,7 +12,15 @@ class Api::V1::PostsController < ApplicationController
         render json: post
     end
 
-    # def create
-        
-    # end
+    def create
+        post = Post.create(post_params)
+
+        render json: post
+    end
+
+    private
+
+    def post_params
+        params.require(:post).permit(:title, :description, :likes, :url_link)
+    end
 end
