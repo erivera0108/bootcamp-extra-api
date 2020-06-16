@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+User.destroy_all
 Post.destroy_all
 Comment.destroy_all
 Tag.destroy_all
@@ -30,8 +30,13 @@ bike_image = [
 ]
 
 20.times do 
+    User.create!(name: Faker::TvShows::Friends.character, bio: Faker::Hacker.say_something_smart, 
+        password: "password", username: Faker::Artist.name, mod: rand(1...5))
+end 
+
+20.times do 
     Post.create!(title: Faker::Book.genre, description: Faker::Books::Lovecraft.paragraph, 
-        likes: rand(1..50), url_link: bike_image.sample)
+        likes: rand(1..50), url_link: bike_image.sample, user: User.all.sample)
 end 
 
 50.times do 
@@ -39,10 +44,15 @@ end
         post: Post.all.sample )
 end
 
-5.times do 
-    Tag.create!( color: Faker::Color.color_name, post: Post.all.sample )
-end
+Tag.create!( color: 'Crimson', label: 'Ruby', post: Post.all.sample )
+Tag.create!( color: 'DarkRed', label: 'Rails', post: Post.all.sample )
+Tag.create!( color: 'Yellow', label: 'JavaScript', post: Post.all.sample )
+Tag.create!( color: 'Blue', label: 'React', post: Post.all.sample )
+Tag.create!( color: 'Grey', label: 'HTML', post: Post.all.sample )
 
-5.times do 
-    Topic.create!( category: Faker::Book.genre, post: Post.all.sample )
-end
+
+Topic.create!( category: 'Ruby', post: Post.all.sample )
+Topic.create!( category: 'Rails', post: Post.all.sample )
+Topic.create!( category: 'JavaScript', post: Post.all.sample )
+Topic.create!( category: 'React', post: Post.all.sample )
+Topic.create!( category: 'Other', post: Post.all.sample )

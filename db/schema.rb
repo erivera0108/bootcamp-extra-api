@@ -27,12 +27,14 @@ ActiveRecord::Schema.define(version: 2020_06_13_182340) do
     t.string "description"
     t.integer "likes"
     t.string "url_link"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tags", force: :cascade do |t|
     t.string "color"
+    t.string "label"
     t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -41,6 +43,16 @@ ActiveRecord::Schema.define(version: 2020_06_13_182340) do
   create_table "topics", force: :cascade do |t|
     t.string "category"
     t.integer "post_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "bio"
+    t.string "password"
+    t.string "username"
+    t.integer "mod"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
