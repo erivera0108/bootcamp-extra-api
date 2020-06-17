@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2020_06_13_182340) do
   create_table "comments", force: :cascade do |t|
     t.string "text"
     t.integer "post_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -27,6 +28,7 @@ ActiveRecord::Schema.define(version: 2020_06_13_182340) do
     t.string "description"
     t.integer "likes"
     t.string "url_link"
+    t.boolean "video", default: false
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
