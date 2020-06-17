@@ -13,20 +13,20 @@ Topic.destroy_all
 
 puts 'Seeding'
 
-bike_image = [
-    "https://i.ibb.co/bvQpjSS/electric2.jpg",
-    "https://i.ibb.co/PC4BNRR/folding2.jpg",
-    "https://i.ibb.co/rts95CP/mountain2.jpg",
-    "https://i.ibb.co/BBNkxwy/multi2.jpg",
-    "https://i.ibb.co/ZHRfsJd/multibike.jpg",
-    "https://i.ibb.co/rts95CP/mountain2.jpg",
-    "https://i.ibb.co/zx94vd0/2-DIAMOND-BLACK-1-1024x1024.jpg",
-    "https://i.ibb.co/z78P09t/Best-Bikes-Reboot-Pinarello-Shutterstock.jpg",
-    "https://i.ibb.co/c2Mzn0F/modern-bicycle.jpg",
-    "https://i.ibb.co/SDkbkD6/Fat-Tire-Bike-by-Ensey-Motorized-Bikes.jpg",
-    "https://i.ibb.co/ZWKCGJD/Fortified-Bicycle-Invincible-Theft-Proof-Bike-10-889x628.jpg",
-    "https://i.ibb.co/LhpYYSj/rapide-21s-matt-copper.jpg",
-    "https://i.ibb.co/z7ryKs5/pexels-photo-276517.jpg"
+resources = [
+    "https://www.youtube.com/watch?v=IYCa1F-OWmk",
+    "https://www.youtube.com/watch?v=Kp3HGwlXwCk",
+    "https://www.youtube.com/watch?v=g2nMKzhkvxw",
+    "https://www.youtube.com/watch?v=5B587bQ-TNg",
+    "https://github.com/learn-co-curriculum/environment-mac-os-catalina-setup",
+    "https://www.w3schools.com/html/html_iframe.asp",
+    "https://reactjs.org/docs/events.html",
+    "https://upmostly.com/tutorials/react-onhover-event-handling-with-examples",
+    "https://api.rubyonrails.org/classes/ActiveRecord/Schema.html",
+    "https://github.com/faker-ruby/faker",
+    "https://docs.google.com/presentation/d/128am55_H_93M9qCjccIZ2Rm6k-hBrOluABozNlf2kgU/edit",
+    "https://semantic-ui.com/usage/theming.html",
+    "https://reacttraining.com/react-router/web/api/Route/render-func"
 ]
 
 20.times do 
@@ -36,12 +36,11 @@ end
 
 20.times do 
     Post.create!(title: Faker::Book.genre, description: Faker::Books::Lovecraft.paragraph, 
-        likes: rand(1..50), url_link: bike_image.sample, user: User.all.sample)
+        likes: rand(1..50), url_link: resources.sample, video: Faker::Boolean.boolean, user: User.all.sample)
 end 
 
 50.times do 
-    Comment.create!( text: Faker::Books::Lovecraft.paragraph, 
-        post: Post.all.sample )
+    Comment.create!( text: Faker::Books::Lovecraft.paragraph, post: Post.all.sample, user: User.all.sample )
 end
 
 Tag.create!( color: 'Crimson', label: 'Ruby', post: Post.all.sample )
